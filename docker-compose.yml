@@ -1,0 +1,13 @@
+db:
+  image: postgres:9.4
+  container_name: weclapp_db
+  environment:
+    - POSTGRES_USER=weclapp
+    - POSTGRES_PASS=weclapp
+web:  
+  image: registry.42nerds.com/weclapp/weclapp:testing
+  container_name: weclapp
+  links:
+    - db:postgres
+  ports:
+    - 8080:8080
